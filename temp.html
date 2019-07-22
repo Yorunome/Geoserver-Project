@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+
+<style>
+#mapid { height: 800px; }
+</style>
+   
+   
+   </head>
+<body>
+<div id="mapid"></div>
+<script>
+
+var mymap = L.map('mapid').setView([24, 85], 6);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+maxZoom: 8,
+id: 'mapbox.streets'
+}).addTo(mymap);
+L.TileLayer.WMS('http://localhost:8080/geoserver/giser', {
+    layers: 'giser%3Ageosouth',
+    format: 'image/png',
+    transparent: true
+    }).addTo(mymap);
+
+
+</script>
+
+</body>
+</html>
+
